@@ -7,7 +7,7 @@ import { withSSRAuth } from "../utils/withSSRAuth";
 import { Can } from "../components/Can";
 
 export default function Dashboard() {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     api.get('/me')
@@ -19,6 +19,8 @@ export default function Dashboard() {
   return (
     <>
       <h1>Dashboard: {user?.email}</h1>
+
+      <button type="button" onClick={signOut}>Sign Out</button>
 
       <Can>
         <div>Métricas</div>
